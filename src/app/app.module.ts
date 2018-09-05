@@ -23,9 +23,14 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CardComponent } from './components/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateCardComponent } from './components/create-card/create-card.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     WebviewDirective,
     FilterComponent,
-    CardComponent
+    CardComponent,
+    CreateCardComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDividerModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatToolbarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -59,6 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [ElectronService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateCardComponent]
 })
 export class AppModule { }

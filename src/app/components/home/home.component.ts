@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../services/database.service';
+import { MatDialog } from '@angular/material';
+import { CreateCardComponent } from '../create-card/create-card.component';
 
 @Component({
   selector: 'app-home',
@@ -8,32 +10,32 @@ import { DatabaseService } from '../../services/database.service';
 })
 export class HomeComponent implements OnInit {
   db: DatabaseService;
+  modal: MatDialog;
   cards: Object[];
-  constructor(db: DatabaseService) {
-    console.log('ESTA ES LA INSTANCIA EN HOME');
+  constructor(db: DatabaseService, modal: MatDialog) {
     this.db = db;
+    this.modal = modal;
   }
 
   ngOnInit() {
-    // this.db.newCard({
-    //   name: 'pruebas', 
-    //   created: Date.now(), 
-    //   updated: Date.now(), 
-    //   data: 'Esta es la informacion'}
-    // ).then(value => {
-    //   console.log('Este es el valor');
-    //   console.log(value);
-    // });
-    // console.log(this.db.getAll().toArray());
     this.db.getAll().toArray().then(cards => {
-      console.log('ESTAS SON LAS CARTAS');
       this.cards = cards;
       console.log(this.cards);
     });
   }
 
   changeFilter(when){
-    console.log('FILTRO CAMBIADO Y ESTOY EN EL PADRE');
+    // console.log('FILTRO CAMBIADO Y ESTOY EN EL PADRE');
+  }
+
+  createCard(card){
+    card.created = new Date();
+    card.updated = new Date();
+    this.db.newCard(card);
+  }
+
+  openCreateCard(){
+    this.modal.open(CreateCardComponent,{width: '50%', height: '50%'});
   }
 
 }

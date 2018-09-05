@@ -26,5 +26,9 @@ export class DatabaseService {
     return this.db.cards.where('id').between(0,100);
   }
 
-  getAllText
+  getTodayCreatedCards(){
+    let today = new Date();
+    today.setHours(0,0,0,0);
+    return this.db.cards.where('created').above(today);
+  }
 }

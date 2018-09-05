@@ -1,8 +1,7 @@
 <mat-form-field>
-  <mat-select placeholder='Select the filter' (selectionChange)='selectWhen($event.value)'>
+  <mat-select placeholder='Since' (selectionChange)='selectWhen($event.value)'>
     <mat-option *ngFor='let filter of whenFilter' [value]='filter.value'>
       {{ filter.view }}
     </mat-option>
   </mat-select>
 </mat-form-field>
-Este es el when: {{when}}

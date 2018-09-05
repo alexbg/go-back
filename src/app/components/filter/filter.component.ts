@@ -7,14 +7,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-  @Input() when: String;
   @Output() whenChange: EventEmitter<String>;
   whenFilter: Object[];
   constructor() { 
     this.whenFilter = [
       {value: 'today', view: 'Today'},
       {value: 'yesterday',view: 'Yesterday'},
-      {value: 'week', view: 'Last Week'}
+      {value: 'week', view: 'Last Week'},
+      {value: 'month', view: 'This Month'},
+      {value: '3months', view: 'Three Months Ago'}
     ];
     this.whenChange = new EventEmitter();
   }
@@ -27,8 +28,6 @@ export class FilterComponent implements OnInit {
   }
 
   selectWhen(when){
-    this.when = when;
-    console.log('LANZADOOOOOO');
     this.whenChange.emit(when);
   }
 
