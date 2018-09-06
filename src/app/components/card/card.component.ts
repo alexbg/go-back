@@ -14,4 +14,24 @@ export class CardComponent implements OnInit {
 
   }
 
+  get created(){
+    let date = new Date(this.card.created);
+    let day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();
+    let month = date.getMonth() < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1;
+    // console.log(date.getDate());
+
+    return day + '-' + month + '-' + date.getFullYear(); 
+    // return this.card.created
+  }
+
+  get updated(){
+    let date = new Date(this.card.updated);
+    let day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();
+    let month = date.getMonth() < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1;
+    // console.log(date.getDate());
+
+    return day + '-' + month + '-' + date.getFullYear(); 
+    // return this.card.created
+  }
+
 }

@@ -1,8 +1,8 @@
 <mat-toolbar>
   <app-filter (whenChange)='changeFilter($event)'></app-filter>
   <button mat-button (click)='openCreateCard()'>Este es el boton</button>
-  <app-card *ngFor='let card of cards'
-    [card] = 'card'
-  ></app-card>
 </mat-toolbar>
+<app-card *ngFor='let card of cards'
+  [card] = 'card'
+></app-card>
 

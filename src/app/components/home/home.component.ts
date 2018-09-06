@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.db.getAll().toArray().then(cards => {
+    this.db.getAll().reverse().sortBy('updated').then(cards => {
       this.cards = cards;
       console.log(this.cards);
     });
@@ -26,12 +26,6 @@ export class HomeComponent implements OnInit {
 
   changeFilter(when){
     // console.log('FILTRO CAMBIADO Y ESTOY EN EL PADRE');
-  }
-
-  createCard(card){
-    card.created = new Date();
-    card.updated = new Date();
-    this.db.newCard(card);
   }
 
   openCreateCard(){
